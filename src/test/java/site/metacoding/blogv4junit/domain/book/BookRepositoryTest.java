@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.persistence.EntityManager;
 
-import org.aspectj.lang.annotation.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -36,7 +35,7 @@ public class BookRepositoryTest {
         // given
         String title = "스프링부트 1강";
         String author = "짱구";
-        Book book = new Book(title, author);
+        Book book = Book.builder().title(title).author(author).build();
 
         // when
         Book bookEntity = bookRepository.save(book);
@@ -53,7 +52,7 @@ public class BookRepositoryTest {
         // given
         String title = "스프링부트 1강";
         String author = "짱구";
-        Book book = new Book(title, author);
+        Book book = Book.builder().title(title).author(author).build();
         bookRepository.save(book);
 
         Long id = 1L;
